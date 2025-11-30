@@ -1,0 +1,18 @@
+// AoC %s day %s part %s
+
+use std::fs;
+
+fn solve(data: &str) -> String {
+    todo!()
+}
+
+fn main() {
+    let filecontent = fs::read_to_string("%s")
+        .expect("Failed to read input file");
+    
+    let result = solve(&filecontent);
+    println!("{}", result);
+    
+    fs::write("%s", &result)
+        .expect("Failed to write result file");
+}
