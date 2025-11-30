@@ -23,7 +23,6 @@ if [ ! -d $year_dir ]; then
     mkdir "$year_dir"
 fi 
 
-# Parse arguments: day (first) and language (second, default: python)
 if [ $# -eq 0 ]; then
     day=$(date +"%d")
     language="python"
@@ -50,7 +49,6 @@ if [ ! -s "$day_dir/input.txt" ] && [ ! -s "$day_dir/example.txt" ]; then
     pipenv run aocd $year $day --example > "$day_dir/example.txt"
 fi
 
-# Create solution files based on selected language
 case $language in
     python|py)
         create_python_solution "$year" "$day" "$day_dir"
@@ -66,7 +64,6 @@ esac
 
 pipenv shell
 
-# Function to create Python solution files
 create_python_solution() {
     local year=$1
     local day=$2
@@ -79,7 +76,6 @@ create_python_solution() {
     fi
 }
 
-# Function to create Rust solution files
 create_rust_solution() {
     local year=$1
     local day=$2
