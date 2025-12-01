@@ -18,23 +18,29 @@ create_rust_solution() {
     local year=$1
     local day=$2
     local day_dir=$3
-    local project_name="aoc_${year}_day${day}"
-    
+    local project_name="aoc_${year}_${day}"
+
     # Initialize Cargo project if it doesn't exist
     if [ ! -f "$day_dir/Cargo.toml" ]; then
         cd "$day_dir"
         cargo init --name "$project_name"
         rm -f src/main.rs
         mkdir -p src/bin
+
+        # create src/lib.rs as an (empty) common library file
+        if [ ! -f src/lib.rs ]; then
+            printf "// AoC %s day %s library\n\n" "$year" "$day" > src/lib.rs
+        fi
+
         cd - > /dev/null
     fi
-    
+
     # Create part1.rs binary
     if [ ! -s "$day_dir/src/bin/part1.rs" ]; then
         rd="../"
         printf "$(cat "$wd/templates/template.rs.txt")" $year $day 1 "$rd/input.txt" "$rd/result1.txt" > "$day_dir/src/bin/part1.rs"
     fi
-    
+
     # Create part2.rs binary
     if [ ! -s "$day_dir/src/bin/part2.rs" ]; then
         rd="../"
