@@ -37,14 +37,12 @@ create_rust_solution() {
 
     # Create part1.rs binary
     if [ ! -s "$day_dir/src/bin/part1.rs" ]; then
-        rd="../"
-        printf "$(cat "$wd/templates/template.rs.txt")" $year $day 1 "$rd/input.txt" "$rd/result1.txt" > "$day_dir/src/bin/part1.rs"
+        printf "$(cat "$wd/templates/template.rs.txt")" $year $day 1 "input.txt" "result1.txt" > "$day_dir/src/bin/part1.rs"
     fi
 
     # Create part2.rs binary
     if [ ! -s "$day_dir/src/bin/part2.rs" ]; then
-        rd="../"
-        printf "$(cat "$wd/templates/template.rs.txt")" $year $day 2 "$rd/input.txt" "$rd/result2.txt" > "$day_dir/src/bin/part2.rs"
+        printf "$(cat "$wd/templates/template.rs.txt")" $year $day 2 "input.txt" "result2.txt" > "$day_dir/src/bin/part2.rs"
     fi
 }
 
